@@ -1,5 +1,12 @@
+import { BrowserRouter } from "react-router-dom";
+import { AppContainer } from "./AppContainer";
+
 function App() {
-  return <>Hello</>;
+  return (
+    <BrowserRouter>
+      <AppContainer />
+    </BrowserRouter>
+  );
 }
 
 export default App;
