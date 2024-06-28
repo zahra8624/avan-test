@@ -1,8 +1,8 @@
 import CircularProgress from "@mui/material/CircularProgress";
 import { Suspense } from "react";
-import { WithSuspenceProps } from "./WithSuspence.type";
+import { WithSuspenseProps } from "./WithSuspense.type";
 
-export const WithSuspence = (ComponentToRender: WithSuspenceProps) => {
+export const WithSuspense = (ComponentToRender: WithSuspenseProps) => {
   return (
     <Suspense
       fallback={
