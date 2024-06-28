@@ -2,7 +2,7 @@ import { HomePageHeader } from "./components";
 
 const HomePage = () => {
   return (
-    <main>
+    <main className="pt-16 pb-10">
       <HomePageHeader />
     </main>
   );

@@ -17,16 +17,17 @@ export const Dialog = (props: DialogProps) => {
     children,
     dialogActions,
     title,
+    open,
     ...dialogProps
   } = props;
   const { search } = useLocation();
   const navigate = useNavigate();
   const queries = QueryString.parse(search, { ignoreQueryPrefix: true });
-  const isOpen = Boolean(queries[flagQueryKey]);
+  const isOpen = flagQueryKey ? Boolean(queries[flagQueryKey]) : Boolean(open);
 
   const _onClose = useCallback(
     (e: any, reason: any) => {
-      navigate(-1 as any, { replace: true });
+      if (flagQueryKey) navigate(-1 as any, { replace: true });
       return onClose?.(e, reason);
     },
     [navigate, onClose]
