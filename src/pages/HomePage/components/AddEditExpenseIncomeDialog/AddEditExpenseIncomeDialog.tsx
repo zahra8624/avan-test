@@ -1,11 +1,12 @@
 import {
   ControlledCategorySelect,
+  ControlledCurrencyInput,
+  ControlledDatePicker,
   ControlledTextField,
   Dialog,
 } from "@app/components";
 import { AddEditExpenseIncomeDialogProps } from "./AddEditExpenseIncomeDialog.type";
 import { useForm } from "react-hook-form";
-import { ControlledCurrencyInput } from "@app/components/molecules/ControlledCurrencyInput";
 
 export const AddEditExpenseIncomeDialog = (
   props: AddEditExpenseIncomeDialogProps
@@ -29,6 +30,7 @@ export const AddEditExpenseIncomeDialog = (
           type={type}
           title={`Select ${type} category`}
         />
+        <ControlledDatePicker name="date" control={control} label="Date" />
         <ControlledTextField
           name="description"
           control={control}
