@@ -6,21 +6,38 @@ import {
   Dialog,
 } from "@app/components";
 import { AddEditExpenseIncomeDialogProps } from "./AddEditExpenseIncomeDialog.type";
-import { useForm } from "react-hook-form";
+import Button from "@mui/material/Button";
+import { useAddEditExpenseIncomeForm } from "./useAddEditExpenseIncomeForm";
+import moment from "moment";
 
 export const AddEditExpenseIncomeDialog = (
   props: AddEditExpenseIncomeDialogProps
 ) => {
   const { type } = props;
-  const formProps = useForm<any>();
-  const { control, reset } = formProps;
+  const { formProps, onSubmit } = useAddEditExpenseIncomeForm(type);
+  const { reset, control } = formProps;
   return (
-    <Dialog flagQueryKey={type} title={`Add ${type}`} onClose={() => reset({})}>
-      <form className="flex flex-col space-y-2.5 py-1.5">
+    <Dialog
+      dialogActions={
+        <div className="w-2/3 mx-auto">
+          <Button onClick={onSubmit} fullWidth variant="contained">
+            Add
+          </Button>
+        </div>
+      }
+      flagQueryKey={type}
+      title={`Add ${type}`}
+      onClose={() =>
+        reset({
+          date: moment(),
+        })
+      }
+    >
+      <form onSubmit={onSubmit} className="flex flex-col space-y-2.5 py-1.5">
         <ControlledCurrencyInput
-          name="expense"
+          name="amount"
           control={control}
-          id="expense"
+          id="amount"
           label="Amount"
           fullWidth
         />
