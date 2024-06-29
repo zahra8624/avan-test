@@ -10,6 +10,7 @@ import qs from "qs";
 import { AddEditExpenseIncomeDialog } from "../AddEditExpenseIncomeDialog/AddEditExpenseIncomeDialog";
 import { IconButton } from "@app/components";
 import { IncomeExpense } from "@app/types";
+import { FilterExpenseIncomeDialog } from "../FilterExpenseIncomeDialog/FilterExpenseIncomeDialog";
 
 export const HomePageHeader = ({
   itemToEdit,
@@ -67,6 +68,7 @@ export const HomePageHeader = ({
         itemToEdit={itemToEdit}
         setItemToEdit={setItemToEdit}
       />
+      <FilterExpenseIncomeDialog />
     </>
   );
 };

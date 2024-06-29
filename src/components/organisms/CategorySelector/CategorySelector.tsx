@@ -16,7 +16,12 @@ export const CategorySelector = (props: CategorySelectorProps) => {
   const { value, onChange, title, type } = props;
   const [showSelector, toggleSelector] = useState<boolean>(false);
   const list = useMemo(
-    () => (type === "expense" ? EXPENSE_CATEGORIES : INCOME_CATEGORIES),
+    () =>
+      type === "both"
+        ? [...EXPENSE_CATEGORIES, ...INCOME_CATEGORIES]
+        : type === "expense"
+        ? EXPENSE_CATEGORIES
+        : INCOME_CATEGORIES,
     [type]
   );
 

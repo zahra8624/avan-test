@@ -4,5 +4,5 @@ export interface CategorySelectorProps {
   value?: Category;
   onChange?: (newCategory?: Category) => void;
   title?: string;
-  type: IncomeExpenseType;
+  type: "income" | "expense" | "both";
 }

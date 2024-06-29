@@ -76,11 +76,13 @@ export const useAddEditExpenseIncomeForm = (
   });
 
   useEffect(() => {
-    if (!!defaultValue) {
-      reset(mapIncomeExpenseToForm(defaultValue));
-    } else {
-      reset({ date: moment() });
-    }
+    setTimeout(() => {
+      if (!!defaultValue) {
+        reset(mapIncomeExpenseToForm(defaultValue));
+      } else {
+        reset({ date: moment() });
+      }
+    }, 300);
   }, [defaultValue]);
 
   return { onSubmit, formProps, isEditMode } as const;

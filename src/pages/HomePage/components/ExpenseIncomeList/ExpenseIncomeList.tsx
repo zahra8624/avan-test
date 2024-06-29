@@ -9,11 +9,13 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useNavigate } from "react-router-dom";
 import { IncomeExpense } from "@app/types";
+import { useExpenseIncomeListWithFilters } from "./useExpenseIncomeListWithFilters";
+import moment from "moment";
 
 export const ExpenseIncomeList = (props: ExpenseIncomeListProps) => {
   const { onEdit } = props;
   const navigate = useNavigate();
-  const expenseIncomeList = useIncomeExpenseStore((state) => state.list);
+  const expenseIncomeList = useExpenseIncomeListWithFilters();
   const removeItemExpenseIncome = useIncomeExpenseStore(
     (state) => state.removeItem
   );
@@ -50,7 +52,12 @@ export const ExpenseIncomeList = (props: ExpenseIncomeListProps) => {
             </div>
             <div className="bg-white flex-1 rounded-md px-2.5 pb-5 pt-1 w-full max-w-full overflow-hidden flex items-start h-full">
               <div className="w-full overflow-hidden">
-                <h4 className="text-xl">{category.name}</h4>
+                <h4 className="text-xl">
+                  {category.name} -{" "}
+                  <span className="text-sm text-gray-400">
+                    {moment(ei.date).format("DD/MM/YYYY")}
+                  </span>
+                </h4>
                 <strong>
                   <NumericFormat value={amount} thousandSeparator />
                 </strong>
