@@ -2,11 +2,13 @@ import {
   FilterObjectType,
   useIncomeExpenseFilterStore,
 } from "@app/hooks/stores";
+import { Category } from "@app/types";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-interface FormData extends Omit<FilterObjectType, "amount"> {
+interface FormData extends Omit<FilterObjectType, "amount" | "categoryId"> {
   amount?: string;
+  category: Category;
 }
 
 export const useFilterExpenseIncomeForm = () => {
@@ -25,6 +27,7 @@ export const useFilterExpenseIncomeForm = () => {
       amount: formData.amount
         ? parseFloat(formData.amount.replace(",", ""))
         : undefined,
+      categoryId: formData.category.id,
     });
     navigate(-1 as any, { replace: true });
   });
