@@ -10,7 +10,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import { Category } from "@app/types";
-
+import { getIcon } from "@app/utils";
 
 export const CategorySelector = (props: CategorySelectorProps) => {
   const { value, onChange, title, type } = props;
@@ -45,7 +45,9 @@ export const CategorySelector = (props: CategorySelectorProps) => {
             </InputAdornment>
           ) : undefined,
           startAdornment: !!value?.icon ? (
-            <InputAdornment position="start">{value.icon}</InputAdornment>
+            <InputAdornment position="start">
+              {getIcon(value.id)}
+            </InputAdornment>
           ) : undefined,
         }}
       />

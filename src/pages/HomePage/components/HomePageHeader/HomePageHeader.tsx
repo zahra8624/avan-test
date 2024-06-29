@@ -9,8 +9,15 @@ import qs from "qs";
 
 import { AddEditExpenseIncomeDialog } from "../AddEditExpenseIncomeDialog/AddEditExpenseIncomeDialog";
 import { IconButton } from "@app/components";
+import { IncomeExpense } from "@app/types";
 
-export const HomePageHeader = () => {
+export const HomePageHeader = ({
+  itemToEdit,
+  setItemToEdit,
+}: {
+  itemToEdit?: IncomeExpense;
+  setItemToEdit: (i?: IncomeExpense) => void;
+}) => {
   const { search } = useLocation();
   const navigate = useNavigate();
   const flags = useMemo(() => {
@@ -57,6 +64,8 @@ export const HomePageHeader = () => {
       </AppBar>
       <AddEditExpenseIncomeDialog
         type={flags.isExpenseOpen ? "expense" : "income"}
+        itemToEdit={itemToEdit}
+        setItemToEdit={setItemToEdit}
       />
     </>
   );

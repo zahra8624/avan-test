@@ -13,25 +13,26 @@ import moment from "moment";
 export const AddEditExpenseIncomeDialog = (
   props: AddEditExpenseIncomeDialogProps
 ) => {
-  const { type } = props;
-  const { formProps, onSubmit } = useAddEditExpenseIncomeForm(type);
+  const { type, itemToEdit, setItemToEdit } = props;
+  const { formProps, onSubmit } = useAddEditExpenseIncomeForm(type, itemToEdit);
   const { reset, control } = formProps;
   return (
     <Dialog
       dialogActions={
         <div className="w-2/3 mx-auto">
           <Button onClick={onSubmit} fullWidth variant="contained">
-            Add
+            {itemToEdit ? "Edit" : "Add"}
           </Button>
         </div>
       }
       flagQueryKey={type}
-      title={`Add ${type}`}
-      onClose={() =>
+      title={`${itemToEdit ? "Edit" : "Add"} ${type}`}
+      onClose={() => {
+        setItemToEdit(undefined);
         reset({
           date: moment(),
-        })
-      }
+        });
+      }}
     >
       <form onSubmit={onSubmit} className="flex flex-col space-y-2.5 py-1.5">
         <ControlledCurrencyInput

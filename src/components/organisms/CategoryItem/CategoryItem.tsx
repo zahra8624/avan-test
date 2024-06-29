@@ -52,6 +52,7 @@ export const CategoryItem = (props: CategoryItemProps) => {
                 remainCategories={remainedCats}
                 layer={layer + 1}
                 onCategoryClick={onCategoryClick}
+                key={scat.id}
               />
             );
           })}

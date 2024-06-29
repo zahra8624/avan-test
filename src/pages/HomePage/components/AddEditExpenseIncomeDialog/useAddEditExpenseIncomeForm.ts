@@ -47,9 +47,7 @@ export const useAddEditExpenseIncomeForm = (
 ) => {
   const formProps = useForm<FormParams>({
     resolver: yupResolver(validationSchema),
-    defaultValues: defaultValue
-      ? mapIncomeExpenseToForm(defaultValue)
-      : { date: moment() },
+    defaultValues: { date: moment() },
   });
   const { reset, handleSubmit } = formProps;
   const isEditMode = !!defaultValue;
@@ -80,6 +78,8 @@ export const useAddEditExpenseIncomeForm = (
   useEffect(() => {
     if (!!defaultValue) {
       reset(mapIncomeExpenseToForm(defaultValue));
+    } else {
+      reset({ date: moment() });
     }
   }, [defaultValue]);
 
