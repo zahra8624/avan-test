@@ -10,7 +10,7 @@ export const useExpenseIncomeListWithFilters = () => {
   const list = useMemo(() => {
     if (!filters) return expenseIncomeList;
     return expenseIncomeList.filter((ei) => {
-      let shouldShow = false;
+      let shouldShow = true;
       if (filters.amount) {
         shouldShow = ei.amount === filters.amount;
       }
