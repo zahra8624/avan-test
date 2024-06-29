@@ -2,6 +2,7 @@ import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import HomeIcon from "@mui/icons-material/Home";
 import MoneyIcon from "@mui/icons-material/Money";
+import EqualizerIcon from "@mui/icons-material/Equalizer";
 import Paper from "@mui/material/Paper";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -10,6 +11,8 @@ export const BottomTabMenu = () => {
   const { pathname } = useLocation();
   const getValue = () => {
     switch (pathname) {
+      case "/chart":
+        return 2;
       case "/budget":
         return 0;
       case "/":
@@ -29,6 +32,11 @@ export const BottomTabMenu = () => {
           label="Home"
           icon={<HomeIcon />}
           onClick={() => navigate("/")}
+        />
+        <BottomNavigationAction
+          label="Chart"
+          icon={<EqualizerIcon />}
+          onClick={() => navigate("/chart")}
         />
       </BottomNavigation>
     </Paper>

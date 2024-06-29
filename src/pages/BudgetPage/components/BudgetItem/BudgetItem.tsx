@@ -19,8 +19,6 @@ export const BudgetItem = (props: BudgetItemProps) => {
     return relatedIncomeExpensesAmount / amount;
   })();
 
-  console.log(percent);
-
   const fixedIcon = useMemo(() => getIcon(category.id), [category.id]);
 
   return (
